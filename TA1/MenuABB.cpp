@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -7,14 +6,14 @@ using namespace std;
 
 #include "ABB.h"
 
-int main(void)
+int main()
 {
    no *T, *p;
    int x, c;
 
    T = ini_AB(T);
-   
-   do 
+
+   do
    {
       system("cls");
       printf("\n");
@@ -29,35 +28,47 @@ int main(void)
 
       cin >> c;
 
-      switch(c) {
-         case 1: 
-            cout << " \nEntre com o item a ser inserido: ";
-            cin >> x;
-            T = insere_AB(T,x); 
-            break;
-         case 2: 
-            emOrdem_AB(T);
-            printf("\n");	
-            break;
-         case 3: 
-  		      preOrdem_AB(T);
- 			   printf("\n");	
-			   break;
-         case 4: 
-  		      posOrdem_AB(T);
- 			   printf("\n");	
-			   break;
-         case 5:
-            percursoEmLargura(T);
-            break;
-         case 6:
-            cout << " \nEntre com o item a ser procurado: ";
-            cin >> x;
-            buscaAB(T,x);
-            break;
-         case 7:
-            exit(0);
-            break;
+      switch (c)
+      {
+      case 1:
+         cout << " \nEntre com o item a ser inserido: ";
+         cin >> x;
+         T = insere_AB(T, x);
+         break;
+      case 2:
+         emOrdem_AB(T);
+         printf("\n");
+         espera();
+         break;
+      case 3:
+         preOrdem_AB(T);
+         printf("\n");
+         espera();
+         break;
+      case 4:
+         posOrdem_AB(T);
+         printf("\n");
+         espera();
+         break;
+      case 5:
+         percursoEmLargura(T);
+         espera();
+         break;
+      case 6:
+         cout << " \nEntre com o item a ser procurado: ";
+         cin >> x;
+         buscaAB(T, x);
+         espera();
+         break;
+      case 7:
+         exit(0);
+         break;
       };
    } while (c != 7);
+}
+
+void espera()
+{
+   cout << "Aperte qualquer botão pra sair" << endl;
+   getch();
 }
