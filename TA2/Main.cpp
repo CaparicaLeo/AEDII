@@ -3,13 +3,12 @@
 
 using namespace std;
 
-const int MAX_tamanho = 100; // Tamanho máximo do heap
-int heap[MAX_tamanho];       // Array para armazenar o MaxHeap
-int tamanho = 0;             // Variável para rastrear o tamanho atual do heap
+const int MAX_tamanho = 100; 
+int heap[MAX_tamanho];      
+int tamanho = 0;             
 
-// Função para reorganizar o heap de baixo para cima (heapify up)
 void corrigirCima(int index) {
-    if (index == 0) return; // Se estiver na raiz, nada a fazer
+    if (index == 0) return; 
 
     int parent = (index - 1) / 2;
     if (heap[index] > heap[parent]) {
@@ -18,7 +17,6 @@ void corrigirCima(int index) {
     }
 }
 
-// Função para reorganizar o heap de cima para baixo (heapify down)
 void corrigirBaixo(int index) {
     int maior = index;
     int Llink = 2 * index + 1;
@@ -38,7 +36,6 @@ void corrigirBaixo(int index) {
     }
 }
 
-// Função para inserir um elemento no MaxHeap
 void insira(int value) {
     if (tamanho >= MAX_tamanho) {
         cout << "Heap está cheio!" << endl;
@@ -50,7 +47,6 @@ void insira(int value) {
     tamanho++;
 }
 
-// Função para remover e retornar o elemento máximo (raiz) do MaxHeap
 int maximoValor() {
     if (tamanho == 0) {
         cout << "Heap vazio!" << endl;
@@ -65,29 +61,38 @@ int maximoValor() {
     return max;
 }
 
-// Função para exibir o heap
 void printarHeap() {
     for (int i = 0; i < tamanho; i++) {
         cout << heap[i] << " ";
     }
-    cout << endl;
+}
+void mensagem(){
+    cout << endl <<"-------MaxHeap atual------"<< endl;
+    printarHeap();
+    cout << endl <<"--------------------------"<< endl;
 }
 
 int main() {
-    // Inserindo elementos no MaxHeap
-    insira(10);
+    cout << "-------CASO DE TESTE INICIAL------"<< endl;
+    cout << "8 : 51: 19 : 20 : 73 : 35" << endl;
+    cout << "----------------------------------" << endl;
+
+    insira(8);
+    mensagem();
+    insira(51);
+    mensagem();
+    insira(19);
+    mensagem();
     insira(20);
-    insira(5);
-    insira(30);
-    insira(25);
+    mensagem();
+    insira(73);
+    mensagem();
+    insira(35);
+    mensagem();
 
-    cout << "MaxHeap atual: ";
-    printarHeap();
+    cout << "Maximo extraido: " << maximoValor() << endl;
 
-    // Extraindo o máximo
-    cout << "Máximo extraído: " << maximoValor() << endl;
-
-    cout << "MaxHeap após extração: ";
+    cout << "MaxHeap apos extracao: ";
     printarHeap();
 
     return 0;
